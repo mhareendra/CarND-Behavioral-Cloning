@@ -38,12 +38,14 @@ The goals / steps of this project are the following:
 #### 1. Submission includes all required files and can be used to run the simulator in autonomous mode
 
 My project includes the following files:
+
 Main submission:
 * model.py containing the script to create and train the model
 * drive.py for driving the car in autonomous mode
 * model.h5 containing a trained convolution neural network 
 * writeup_report.md or writeup_report.pdf summarizing the results
 The main submission uses the sample dataset provided by Udacity.
+
 The supplementary submission includes the above files for a secondary training data set (collected manually) of track1 and track2. 
 
 #### 2. Submission includes functional code
