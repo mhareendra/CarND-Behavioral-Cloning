@@ -77,23 +77,28 @@ validation_generator = generator(validation_samples, batch_size=4)
 
 ch, row, col = 3, 160, 320 
 
-from keras.models import load_model
 from keras.models import Sequential
 from keras.layers import Flatten, Dense, Lambda,Cropping2D, Dropout
 from keras.layers.convolutional import Convolution2D
 
 model = Sequential()
+#normalization layer
 # Preprocess incoming data, centered around zero  
 model.add(Lambda(lambda x: x/255.0 - 0.5,
         input_shape=(row, col, ch)
         ))
+#crop the top 75 rows of the image (contains non-road regions) and bottom 25 rows (hood of the car)
 model.add(Cropping2D(cropping=((70,25), (0,0))))
+
+#5 convolutional layers
 model.add(Convolution2D(24,5,5,subsample=(2,2),activation="relu"))
 model.add(Convolution2D(36,5,5,subsample=(2,2),activation="relu"))
 model.add(Convolution2D(48,5,5,subsample=(2,2),activation="relu"))
 model.add(Convolution2D(64,3,3,activation="relu"))
 model.add(Convolution2D(64,3,3,activation="relu"))
 model.add(Flatten())
+
+#fully-connected layers
 model.add(Dense(100))
 model.add(Dense(50))
 model.add(Dense(10))
