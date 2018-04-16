@@ -87,7 +87,7 @@ model = Sequential()
 model.add(Lambda(lambda x: x/255.0 - 0.5,
         input_shape=(row, col, ch)
         ))
-#crop the top 75 rows of the image (contains non-road regions) and bottom 25 rows (hood of the car)
+#crop the top 70 rows of the image (contains non-road regions) and bottom 25 rows (hood of the car)
 model.add(Cropping2D(cropping=((70,25), (0,0))))
 
 #5 convolutional layers
