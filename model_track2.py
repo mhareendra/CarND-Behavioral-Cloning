@@ -114,6 +114,6 @@ model.fit_generator(train_generator, samples_per_epoch=
             len(train_samples), validation_data=validation_generator,
             nb_val_samples=len(validation_samples), nb_epoch=3, shuffle=True)
 
-model.save('model_track2_turn_fail_compensation_dropout.h5')
+model.save('model_track2.h5')
 
 print('Done!')
